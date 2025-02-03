@@ -30,7 +30,6 @@ public class CustomerService {
         Customer customer = new Customer();
         customer.setName(customerRegistrationRequest.name());
         customer.setEmail(customerRegistrationRequest.email());
-        customer.setAge(customerRegistrationRequest.age());
 
         customerDataAccessService.insertCustomer(customer);
     }
