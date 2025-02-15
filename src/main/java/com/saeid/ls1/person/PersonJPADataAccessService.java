@@ -1,5 +1,6 @@
 package com.saeid.ls1.person;
 
+import com.saeid.ls1.exceptions.ResourceNotFound;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,21 +16,21 @@ public class PersonJPADataAccessService implements PersonDAO {
 
     @Override
     public List<Person> findAll() {
-        return this.personRepository.findAll();
+        return personRepository.findAll();
     }
 
     @Override
     public Optional<Person> findById(Long id) {
-        return this.personRepository.findById(id);
+        return personRepository.findById(id);
     }
 
     @Override
     public Person save(Person person) {
-        return this.personRepository.save(person);
+        return personRepository.save(person);
     }
 
     @Override
     public void deleteById(Long id) {
-        this.personRepository.deleteById(id);
+        personRepository.deleteById(id);
     }
 }
