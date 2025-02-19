@@ -22,7 +22,7 @@ public class CustomerService {
         return customerDataAccessService.selectCustomerById(id);
     }
 
-    public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
+    public void addCustomer(CustomerDTO customerRegistrationRequest) {
         if (customerDataAccessService.existsPersonWithEmail(customerRegistrationRequest.email())) {
             throw new DuplicationResourceException("Customer with email " + customerRegistrationRequest.email() + " already exists");
         }

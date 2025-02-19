@@ -22,7 +22,7 @@ public class PersonService {
         return personJPADataAccessService.findById(id);
     }
 
-    public void add(PersonRegisterRequest pr) {
+    public void add(PersonDTO pr) {
         Person person = new Person();
         person.setAge(pr.age());
         person.setFirstName(pr.firstName());
@@ -34,7 +34,7 @@ public class PersonService {
         personJPADataAccessService.deleteById(id);
     }
 
-    public void update(Long id, PersonRegisterRequest request) {
+    public void update(Long id, PersonDTO request) {
         getPersonById(id).ifPresent(person -> {
             person.setAge(request.age());
             person.setFirstName(request.firstName());

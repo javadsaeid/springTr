@@ -1,6 +1,6 @@
 package com.saeid.ls1.person;
 
-public record PersonRegisterRequest(
+public record PersonDTO(
         String firstName,
         String lastName,
         int age
