@@ -20,7 +20,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public void createPerson(@RequestBody PersonRegisterRequest person) throws ResourceNotFound {
+    public void createPerson(@RequestBody PersonDTO person) throws ResourceNotFound {
         personService.add(person);
     }
 
@@ -30,7 +30,7 @@ public class PersonController {
     }
 
     @PutMapping("{id}")
-    public void updatePerson(@PathVariable Long id, @RequestBody PersonRegisterRequest request) {
+    public void updatePerson(@PathVariable Long id, @RequestBody PersonDTO request) {
         personService.update(id, request);
     }
 

@@ -1,6 +1,6 @@
 package com.saeid.ls1.customer;
 
-public record CustomerRegistrationRequest(
+public record CustomerDTO(
         String name,
         String email,
         Integer age
