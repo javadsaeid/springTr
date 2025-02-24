@@ -1,6 +1,7 @@
 package com.saeid.ls1.person;
 
 import com.saeid.ls1.exceptions.ResourceNotFound;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class PersonController {
     }
 
     @PostMapping
-    public void createPerson(@RequestBody PersonDTO person) throws ResourceNotFound {
+    public void createPerson(@RequestBody @Valid PersonDTO person) throws ResourceNotFound {
         personService.add(person);
     }
 
