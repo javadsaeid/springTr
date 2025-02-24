@@ -1,21 +1,26 @@
 package com.saeid.ls1.person;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
 @Entity
 public class Person {
+
     private String firstName;
     private String lastName;
     private Integer age;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "person_id_sequence", sequenceName = "person_id_sequence")
     private Long id;
 
-    public Person() {}
-    
+    public Person() {
+    }
+
     public Person(String firstName, String lastName, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,11 +73,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", age=" + age +
-                '}';
+        return "Person{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", age=" + age + '}';
     }
-    
+
 }

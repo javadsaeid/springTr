@@ -12,7 +12,7 @@ import java.util.List;
 @ControllerAdvice
 public class DefaultExceptionHandler {
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(ResourceNotFound.class)
     public ResponseEntity<ApiError> handle(
             ResourceNotFound e,
             HttpServletRequest request
@@ -27,5 +27,39 @@ public class DefaultExceptionHandler {
         );
 
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiError> handle(
+            Exception e,
+            HttpServletRequest request
+    ) {
+        ApiError apiError = new ApiError(
+                request.getRequestURI(),
+                e.getMessage(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                ZonedDateTime.now(),
+                List.of()
+
+        );
+
+        return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(DuplicationResourceException.class)
+    public ResponseEntity<ApiError> handle(
+            DuplicationResourceException e,
+            HttpServletRequest request
+    ) {
+        ApiError apiError = new ApiError(
+                request.getRequestURI(),
+                e.getMessage(),
+                HttpStatus.CONFLICT.value(),
+                ZonedDateTime.now(),
+                List.of()
+
+        );
+
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
 }
