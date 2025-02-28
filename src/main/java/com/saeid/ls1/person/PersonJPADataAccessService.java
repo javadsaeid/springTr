@@ -1,10 +1,9 @@
 package com.saeid.ls1.person;
 
-import com.saeid.ls1.exceptions.ResourceNotFound;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
 
 @Repository("personRepo")
 public class PersonJPADataAccessService implements PersonDAO {

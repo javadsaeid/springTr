@@ -1,8 +1,13 @@
 package com.saeid.ls1.customer;
 
-import jakarta.persistence.*;
-
 import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Customer {
@@ -16,6 +21,9 @@ public class Customer {
 
     @Column(nullable = false)
     private String email;
+
+     @Column
+     private Boolean isActive;
 
     public Customer() {}
 
@@ -48,12 +56,21 @@ public class Customer {
         this.email = email;
     }
 
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        this.isActive = active;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", active='" + isActive.toString() + '\'' +
                 '}';
     }
 
@@ -68,4 +85,5 @@ public class Customer {
     public int hashCode() {
         return Objects.hash(id, name, email);
     }
+
 }
