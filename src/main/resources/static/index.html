@@ -5,15 +5,74 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Landing Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Spring boot</h1>
-</body>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-800">Brand</a>
+            <div class="hidden md:flex">
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Home</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">About</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Services</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800 mx-2">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none" id="menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="md:hidden" id="menu">
+            <a href="#" class="block text-gray-600 hover:text-gray-800 px-4 py-2">Home</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 px-4 py-2">About</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 px-4 py-2">Services</a>
+            <a href="#" class="block text-gray-600 hover:text-gray-800 px-4 py-2">Contact</a>
+        </div>
+    </nav>
+    <div class="landing-page text-center py-20">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Our Service</h1>
+        <p class="text-lg text-gray-600">We provide the best solutions for your needs. Explore our services and get in touch with us for more information.</p>
+        <div class="customer-wrapper p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </div>
 <script>
-    // just for testing api
-    fetch("api/v1/customers")
+    document.getElementById('menu-button').addEventListener('click', () => {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden');
+    });
+
+    // Fetch customers and display them
+    {# fetch("api/v1/customers")
     .then(res => res.json())
-    .then(d => console.log(d))
-</script>
+    .then(customers => {
+        const customerWrapper = document.querySelector('.customer-wrapper');
+        customers.forEach(customer => {
+            const customerDiv = document.createElement('div');
+            customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
+            customerDiv.innerHTML = `
+                <h2 class="text-xl font-bold text-gray-800">${customer.name}</h2>
+                <p class="text-gray-600">${customer.email}</p>
+            `;
+            customerWrapper.appendChild(customerDiv);
+        });
+    });
+
+    fetch("api/v1/persons")
+    .then(res => res.json())
+    .then(persons => {
+        console.log(persons);
+        const customerWrapper = document.querySelector('.customer-wrapper');
+        persons.forEach(person => {
+            const customerDiv = document.createElement('div');
+            customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
+            customerDiv.innerHTML = `
+                <h2 class="text-xl font-bold text-gray-800">${person.firstName}</h2>
+                <p class="text-gray-600">${person.lastName}</p>
+            `;
+            customerWrapper.appendChild(customerDiv);
+        });
+    });
+</script> #}
+</body>
 </html>
