@@ -27,6 +27,8 @@ public class PersonService {
         person.setAge(pr.age());
         person.setFirstName(pr.firstName());
         person.setLastName(pr.lastName());
+        person.setGender(pr.gender());
+
         personJPADataAccessService.save(person);
     }
 
@@ -35,13 +37,13 @@ public class PersonService {
     }
 
     public void update(Long id, PersonDTO request) {
-        getPersonById(id).ifPresent(person -> {
-            person.setAge(request.age());
-            person.setFirstName(request.firstName());
-            person.setLastName(request.lastName());
-            personJPADataAccessService.save(person);
-        });
+        Person person = getPersonById(id).orElseThrow(() -> new ResourceNotFound("Person with id " + id + " not found"));
 
-        throw new ResourceNotFound("Person with id " + id + " not found");
+        person.setAge(request.age());
+        person.setFirstName(request.firstName());
+        person.setLastName(request.lastName());
+        person.setGender(request.gender());
+
+        personJPADataAccessService.save(person);
     }
 }
