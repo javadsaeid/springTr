@@ -2,6 +2,7 @@ package com.saeid.ls1.person;
 
 import java.util.Objects;
 
+import com.saeid.ls1.enums.Gender;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +15,16 @@ public class Person {
     private String firstName;
     private String lastName;
     private Integer age;
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    private Gender gender;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
