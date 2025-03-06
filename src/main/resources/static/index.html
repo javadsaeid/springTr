@@ -43,36 +43,36 @@
     });
 
     // Fetch customers and display them
-    {# fetch("api/v1/customers")
-    .then(res => res.json())
-    .then(customers => {
-        const customerWrapper = document.querySelector('.customer-wrapper');
-        customers.forEach(customer => {
-            const customerDiv = document.createElement('div');
-            customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
-            customerDiv.innerHTML = `
-                <h2 class="text-xl font-bold text-gray-800">${customer.name}</h2>
-                <p class="text-gray-600">${customer.email}</p>
-            `;
-            customerWrapper.appendChild(customerDiv);
-        });
-    });
-
-    fetch("api/v1/persons")
-    .then(res => res.json())
-    .then(persons => {
-        console.log(persons);
-        const customerWrapper = document.querySelector('.customer-wrapper');
-        persons.forEach(person => {
-            const customerDiv = document.createElement('div');
-            customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
-            customerDiv.innerHTML = `
-                <h2 class="text-xl font-bold text-gray-800">${person.firstName}</h2>
-                <p class="text-gray-600">${person.lastName}</p>
-            `;
-            customerWrapper.appendChild(customerDiv);
-        });
-    });
-</script> #}
+    // fetch("api/v1/customers")
+    // .then(res => res.json())
+    // .then(customers => {
+    //     const customerWrapper = document.querySelector('.customer-wrapper');
+    //     customers.forEach(customer => {
+    //         const customerDiv = document.createElement('div');
+    //         customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
+    //         customerDiv.innerHTML = `
+    //             <h2 class="text-xl font-bold text-gray-800">${customer.name}</h2>
+    //             <p class="text-gray-600">${customer.email}</p>
+    //         `;
+    //         customerWrapper.appendChild(customerDiv);
+    //     });
+    // });
+    //
+    // fetch("api/v1/persons")
+    // .then(res => res.json())
+    // .then(persons => {
+    //     console.log(persons);
+    //     const customerWrapper = document.querySelector('.customer-wrapper');
+    //     persons.forEach(person => {
+    //         const customerDiv = document.createElement('div');
+    //         customerDiv.classList.add('customer', 'bg-white', 'p-4', 'my-2', 'rounded', 'shadow-md');
+    //         customerDiv.innerHTML = `
+    //             <h2 class="text-xl font-bold text-gray-800">${person.firstName}</h2>
+    //             <p class="text-gray-600">${person.lastName}</p>
+    //         `;
+    //         customerWrapper.appendChild(customerDiv);
+    //     });
+    // });
+</script>
 </body>
 </html>
