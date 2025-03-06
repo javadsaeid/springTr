@@ -1,10 +1,11 @@
 package com.saeid.ls1.customer;
 
 import com.saeid.ls1.exceptions.DuplicationResourceException;
+import com.saeid.ls1.exceptions.ResourceNotFound;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class CustomerService {
@@ -18,8 +19,9 @@ public class CustomerService {
         return customerDataAccessService.selectAllCustomers();
     }
 
-    public Optional<Customer> getCustomerById(int id) {
-        return customerDataAccessService.selectCustomerById(id);
+    public Customer getCustomerById(int id) {
+        return customerDataAccessService.selectCustomerById(id)
+                .orElseThrow(() -> new ResourceNotFound("Customer with id " + id + " not found"));
     }
 
     public void addCustomer(CustomerDTO customerRegistrationRequest) {

@@ -19,8 +19,7 @@ public class CustomerController {
 
     @GetMapping("{customerId}")
     public Customer getCustomer(@PathVariable Integer customerId) {
-        return customerService.getCustomerById(customerId)
-                .orElseThrow(() -> new ResourceNotFound("Customer with id " + customerId + " not found"));
+        return customerService.getCustomerById(customerId);
     }
 
     @PostMapping
