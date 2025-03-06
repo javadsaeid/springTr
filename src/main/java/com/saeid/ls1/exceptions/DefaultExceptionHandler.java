@@ -1,6 +1,8 @@
 package com.saeid.ls1.exceptions;
 
-import jakarta.servlet.http.HttpServletRequest;
+import java.time.ZonedDateTime;
+import java.util.List;
+
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,8 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.time.ZonedDateTime;
-import java.util.List;
+import jakarta.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class DefaultExceptionHandler {
@@ -36,7 +37,6 @@ public class DefaultExceptionHandler {
             Exception e,
             HttpServletRequest request
     ) {
-        System.out.println(e.getClass().getName());
         ApiError apiError = new ApiError(
                 request.getRequestURI(),
                 e.getMessage(),
